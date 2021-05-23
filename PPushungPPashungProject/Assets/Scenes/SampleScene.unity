@@ -3101,7 +3101,7 @@ MonoBehaviour:
   isLookingLeft: 0
   speedX: 0
   maxSpeedX: 2
-  jumpForce: 300
+  jumpForce: 500
   jumpFlag: 0
   R2D: {fileID: 0}
   AS: {fileID: 0}
