@@ -86,7 +86,14 @@ public class csPlayer : MonoBehaviour
             }
             
     }
-	
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+
+       
+
+    }
+
 
 
 }
