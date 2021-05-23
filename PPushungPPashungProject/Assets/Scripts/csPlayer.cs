@@ -26,6 +26,7 @@ public class csPlayer : MonoBehaviour
 
     public Rigidbody2D R2D;
     public AudioSource AS;
+    public SpriteRenderer SR;
 	
     public AudioClip jumpSound;
     public AudioClip dropSound;
@@ -36,15 +37,19 @@ public class csPlayer : MonoBehaviour
     {
         R2D = GetComponent<Rigidbody2D>();
         AS = GetComponent<AudioSource>();
+        SR = GetComponent<SpriteRenderer>();
+		
         R2D.freezeRotation = true;
         // Disable jumping on start
         jumpFlag = true;
-}
+	}
 
 
 
     void Update()
     {
+		
+		SR.flipX = isLookingLeft;
         
         if (Input.GetKey(KeyCode.A))
         {
