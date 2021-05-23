@@ -21,7 +21,8 @@ public class csPlayer : MonoBehaviour
     public float maxSpeedX = 0;
 	
     public float jumpForce = 0;
-    public bool jumpFlag = false;
+    // true -> jumping
+    public bool jumpFlag = true;
 
     public Rigidbody2D R2D;
     public AudioSource AS;
@@ -57,7 +58,7 @@ public class csPlayer : MonoBehaviour
             isLookingLeft = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumpFlag == false)
+        if (Input.GetKeyDown(KeyCode.Space) == true && jumpFlag == false)
         {
             R2D.AddForce(new Vector2(0, jumpForce));
             AS.PlayOneShot(jumpSound);
@@ -66,11 +67,12 @@ public class csPlayer : MonoBehaviour
 		
     }
 	
+
 	
     void OnCollisionEnter2D(Collision2D coll)
     {
 		
-            if (coll.gameObject.CompareTag("Floor") == true)
+            if (coll.gameObject.CompareTag("Floor") == true && jumpFlag == true)
             {
                 AS.PlayOneShot(dropSound);
                 jumpFlag = false;
