@@ -22,7 +22,7 @@ public class csPlayer : MonoBehaviour
 	
     public float jumpForce = 0;
     // true -> jumping
-    public bool jumpFlag = true;
+    public bool jumpFlag = false;
 
     public Rigidbody2D R2D;
     public AudioSource AS;
@@ -37,7 +37,9 @@ public class csPlayer : MonoBehaviour
         R2D = GetComponent<Rigidbody2D>();
         AS = GetComponent<AudioSource>();
         R2D.freezeRotation = true;
-    }
+        // Disable jumping on start
+        jumpFlag = true;
+}
 
 
 
