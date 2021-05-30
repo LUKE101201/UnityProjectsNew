@@ -24,6 +24,7 @@ public class csPlayer : MonoBehaviour
     // true -> jumping
     public bool jumpFlag = false;
 
+    public Animator AM;
     public Rigidbody2D R2D;
     public AudioSource AS;
     public SpriteRenderer SR;
@@ -40,6 +41,7 @@ public class csPlayer : MonoBehaviour
 
     void Start()
     {
+        AM = GetComponent<Animator>();
         R2D = GetComponent<Rigidbody2D>();
         AS = GetComponent<AudioSource>();
         SR = GetComponent<SpriteRenderer>();
@@ -48,11 +50,21 @@ public class csPlayer : MonoBehaviour
         // Disable jumping on start
         jumpFlag = true;
 	}
+    
+
+
+    bool IsMoving()
+    {
+        return (R2D.velocity.sqrMagnitude > 1.0f);
+    }
 
 
 
     void Update()
     {
+        AM.SetBool("dead", isDead);
+        AM.SetBool("walking", IsMoving());
+        AM.SetBool("jumping", jumpFlag);
 
         if (isDead)
         {
@@ -109,7 +121,7 @@ public class csPlayer : MonoBehaviour
         {
             AS.PlayOneShot(killSound);
             isDead = true;
-            transform.Rotate(Vector3.forward * 90); // ¿·À¸·Î ´¯°Ô
+            // transform.Rotate(Vector3.forward * 90); // ¿·À¸·Î ´¯°Ô
             // Destroy(this.GetComponent<GameObject>());
             // this.GetComponent<Transform>() = transform
         }

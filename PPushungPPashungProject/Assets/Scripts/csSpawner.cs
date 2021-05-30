@@ -39,7 +39,10 @@ public class csSpawner : MonoBehaviour
             {
                 // Quaternion.identity -> 각도 알려주는거, 어려우므로 지금은 패스. 하지만 필요.
                 //Instantiate(playerPrefab, spawnPoint, Quaternion.identity);
-                Instantiate(playerPrefab, transform.position, Quaternion.identity);
+                Instantiate(
+                    playerPrefab, 
+                    new Vector3(transform.position.x, transform.position.y, 0), 
+                    Quaternion.identity);
                 timer = 0;
             }
 
