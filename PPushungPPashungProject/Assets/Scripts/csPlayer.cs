@@ -85,19 +85,17 @@ public class csPlayer : MonoBehaviour
         else
         {
 
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                // Instantiate 사용법 : Instantiate(소환할거 (GameObject), 위치 (Vector3), Quaternion (그냥 아래꺼 쓰면 됨))
+                GameObject newBullet = Instantiate(Bullet, RightBulletSpawnPoint.position, Quaternion.identity);
+                newBullet.GetComponent<Rigidbody2D>().AddForce(Vector2.right * shootForce);
+            }
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                if (isLookingLeft == false)
-                {
-                    // Instantiate 사용법 : Instantiate(소환할거 (GameObject), 위치 (Vector3), Quaternion (그냥 아래꺼 쓰면 됨))
-                    GameObject newBullet = Instantiate(Bullet, RightBulletSpawnPoint.position, Quaternion.identity);
-                    newBullet.GetComponent<Rigidbody2D>().AddForce(Vector2.right * shootForce);
-                }
-                else
-                {
-                    GameObject newBullet = Instantiate(Bullet, LeftBulletSpawnPoint.position, Quaternion.identity);
-                    newBullet.GetComponent<Rigidbody2D>().AddForce(Vector2.left * shootForce);
-                }
+                GameObject newBullet = Instantiate(Bullet, LeftBulletSpawnPoint.position, Quaternion.identity);
+                newBullet.GetComponent<Rigidbody2D>().AddForce(Vector2.left * shootForce);
+
             }
 
             SR.flipX = isLookingLeft;
