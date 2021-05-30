@@ -41,7 +41,8 @@ public class Balloon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        R2D = GetComponent<Rigidbody2D>();
+        AS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -54,14 +55,16 @@ public class Balloon : MonoBehaviour
     {
         if (Input.GetKey("a"))
         {
-            transform.Translate(speedX * Time.deltaTime, 0, 0);
-            speedX = -maxSpeedX;
+            //transform.Translate(speedX * Time.deltaTime, 0, 0);
+            //speedX = -maxSpeedX;
+            R2D.AddForce(Vector2.left * maxSpeedX);
         }
 
         if (Input.GetKey("d"))
         {
-            transform.Translate(speedX * Time.deltaTime, 0, 0);
-            speedX = maxSpeedX;
+            //transform.Translate(speedX * Time.deltaTime, 0, 0);
+            //speedX = maxSpeedX;
+            R2D.AddForce(Vector2.right * maxSpeedX);
         }
 
         if (Input.GetKey("space") && jumpFlag == false)

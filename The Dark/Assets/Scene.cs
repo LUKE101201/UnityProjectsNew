@@ -40,11 +40,12 @@ public class Scene : MonoBehaviour
     //public AudioClip 
     //public AudioClip 
     // Start is called before the first frame update
+
     void Start()
     {
-        Rigidbody2D asd = GameObject.Find("balloon_0").GetComponent<Rigidbody2D>();
-        R2D = asd;
+        R2D = GameObject.Find("balloon_0").GetComponent<Rigidbody2D>();
         BalloonTransform = GameObject.Find("balloon_0").GetComponent<Transform>();
+        AS = GameObject.Find("balloon_0").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
