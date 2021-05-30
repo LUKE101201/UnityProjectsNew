@@ -38,7 +38,7 @@ public class csSpawner : MonoBehaviour
             if (playerCount < maxPlayerCount)
             {
                 // Quaternion.identity -> 각도 알려주는거, 어려우므로 지금은 패스. 하지만 필요.
-                //Instantiate(playerPrefab, spawnPoint, Quaternion.identity);
+                //Instantiate(playerPrefab, spawnPoint, Quaternqion.identity);
                 Instantiate(
                     playerPrefab, 
                     new Vector3(transform.position.x, transform.position.y, 0), 

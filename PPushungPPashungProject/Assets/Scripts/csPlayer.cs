@@ -21,6 +21,7 @@ public class csPlayer : MonoBehaviour
     public float moveForceX = 0;
 	
     public float jumpForce = 0;
+    public float shootForce = 0;
     // true -> jumping
     public bool jumpFlag = false;
 
@@ -37,6 +38,10 @@ public class csPlayer : MonoBehaviour
     public float killTimer;
     public float killDelay;
 
+    public GameObject Bullet;
+    public Transform RightBulletSpawnPoint;
+    public Transform LeftBulletSpawnPoint;
+
 
 
     void Start()
@@ -45,7 +50,10 @@ public class csPlayer : MonoBehaviour
         R2D = GetComponent<Rigidbody2D>();
         AS = GetComponent<AudioSource>();
         SR = GetComponent<SpriteRenderer>();
-		
+
+        RightBulletSpawnPoint = transform.Find("RightBulletSpawnPoint");
+        LeftBulletSpawnPoint = transform.Find("LeftBulletSpawnPoint");
+
         R2D.freezeRotation = true;
         // Disable jumping on start
         jumpFlag = true;
@@ -77,23 +85,33 @@ public class csPlayer : MonoBehaviour
         else
         {
 
-            if (jumpFlag == false) // 점프 중이 아닐때만 이동가능
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-
-                SR.flipX = isLookingLeft;
-
-                if (Input.GetKey(KeyCode.A))
+                if (isLookingLeft == false)
                 {
-                    R2D.AddForce(new Vector2(-moveForceX * Time.deltaTime, 0));
-                    isLookingLeft = true;
+                    // Instantiate 사용법 : Instantiate(소환할거 (GameObject), 위치 (Vector3), Quaternion (그냥 아래꺼 쓰면 됨))
+                    GameObject newBullet = Instantiate(Bullet, RightBulletSpawnPoint.position, Quaternion.identity);
+                    newBullet.GetComponent<Rigidbody2D>().AddForce(Vector2.right * shootForce);
                 }
-
-                if (Input.GetKey(KeyCode.D))
+                else
                 {
-                    R2D.AddForce(new Vector2(moveForceX * Time.deltaTime, 0));
-                    isLookingLeft = false;
+                    GameObject newBullet = Instantiate(Bullet, LeftBulletSpawnPoint.position, Quaternion.identity);
+                    newBullet.GetComponent<Rigidbody2D>().AddForce(Vector2.left * shootForce);
                 }
+            }
 
+            SR.flipX = isLookingLeft;
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                R2D.AddForce(new Vector2(-moveForceX * Time.deltaTime, 0));
+                isLookingLeft = true;
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                R2D.AddForce(new Vector2(moveForceX * Time.deltaTime, 0));
+                isLookingLeft = false;
             }
 
             if (Input.GetKeyDown(KeyCode.Space) == true && jumpFlag == false)
