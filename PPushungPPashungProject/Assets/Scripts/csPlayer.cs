@@ -26,6 +26,7 @@ public class csPlayer : MonoBehaviour
 
     public Animator AM;
     public Rigidbody2D R2D;
+    public BoxCollider2D BOX;
     public AudioSource AS;
     public SpriteRenderer SR;
 	
@@ -40,7 +41,9 @@ public class csPlayer : MonoBehaviour
 
 
     void Start()
-    {
+    { 
+        R2D = gameObject.GetComponent<Rigidbody2D>();
+        BOX = gameObject.GetComponent<BoxCollider2D>();
         AM = GetComponent<Animator>();
         R2D = GetComponent<Rigidbody2D>();
         AS = GetComponent<AudioSource>();
@@ -68,6 +71,10 @@ public class csPlayer : MonoBehaviour
 
         if (isDead)
         {
+            R2D.gravityScale = 0;
+            R2D.velocity = Vector2.zero;
+            BOX.enabled = false;
+
             killTimer += Time.deltaTime;
             if (killTimer >= killDelay)
             {
@@ -77,23 +84,18 @@ public class csPlayer : MonoBehaviour
         else
         {
 
-            if (jumpFlag == false) // 점프 중이 아닐때만 이동가능
+            SR.flipX = isLookingLeft;
+
+            if (Input.GetKey(KeyCode.A))
             {
+                R2D.AddForce(new Vector2(-moveForceX * Time.deltaTime, 0));
+                isLookingLeft = true;
+            }
 
-                SR.flipX = isLookingLeft;
-
-                if (Input.GetKey(KeyCode.A))
-                {
-                    R2D.AddForce(new Vector2(-moveForceX * Time.deltaTime, 0));
-                    isLookingLeft = true;
-                }
-
-                if (Input.GetKey(KeyCode.D))
-                {
-                    R2D.AddForce(new Vector2(moveForceX * Time.deltaTime, 0));
-                    isLookingLeft = false;
-                }
-
+            if (Input.GetKey(KeyCode.D))
+            {
+                R2D.AddForce(new Vector2(moveForceX * Time.deltaTime, 0));
+                isLookingLeft = false;
             }
 
             if (Input.GetKeyDown(KeyCode.Space) == true && jumpFlag == false)
@@ -103,7 +105,7 @@ public class csPlayer : MonoBehaviour
                 jumpFlag = true;
             }
 
-        }
+        }   
 		
     }
 	

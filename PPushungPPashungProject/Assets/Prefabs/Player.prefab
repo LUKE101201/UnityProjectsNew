@@ -122,6 +122,7 @@ MonoBehaviour:
   moveForceX: 1200
   jumpForce: 500
   jumpFlag: 0
+  AM: {fileID: 0}
   R2D: {fileID: 0}
   AS: {fileID: 0}
   SR: {fileID: 0}
