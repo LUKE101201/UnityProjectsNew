@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 2a66421cc64ac8f4c9c2093c12f689f3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - R2D: {instanceID: 0}
+  - AS: {instanceID: 0}
+  - SR: {instanceID: 0}
+  - jumpSound: {instanceID: 0}
+  - dropSound: {instanceID: 0}
+  - keynamnam: {instanceID: 0}
+  - Die: {instanceID: 0}
+  - Break: {instanceID: 0}
+  - Becairful: {instanceID: 0}
+  - fast: {instanceID: 0}
+  - down: {instanceID: 0}
+  - Max: {instanceID: 0}
+  - day: {instanceID: 0}
+  - ghost: {instanceID: 0}
+  - boss: {instanceID: 0}
+  - die: {instanceID: 0}
+  - booster: {instanceID: 0}
+  - playerCamera: {instanceID: 0}
+  - Door: {fileID: 8300000, guid: d7b08edcc6c6b9f45a9a5770753c4e21, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
