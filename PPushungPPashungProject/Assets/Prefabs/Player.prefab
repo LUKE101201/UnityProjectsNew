@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2077155636}
+  - component: {fileID: 1405879025}
   m_Layer: 0
   m_Name: RightBulletSpawnPoint
   m_TagString: Untagged
@@ -30,6 +31,18 @@ Transform:
   m_Father: {fileID: 2561986104256155879}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1405879025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077155635}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff9c6ed64f2dee34fb6852f7f34e1df0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2561986104256155872
 GameObject:
   m_ObjectHideFlags: 0
@@ -48,7 +61,7 @@ GameObject:
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -151,9 +164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLookingLeft: 0
-  moveForceX: 1100
+  moveForceX: 500
   jumpForce: 500
-  shootForce: 3000
+  shootForce: 7000
   jumpFlag: 0
   AM: {fileID: 0}
   R2D: {fileID: 0}
@@ -163,11 +176,17 @@ MonoBehaviour:
   dropSound: {fileID: 8300000, guid: 99b0e65c03ac50c48b73a101ef56ca37, type: 3}
   killSound: {fileID: 8300000, guid: c8efa5e94e6d8574eb86c1bfa70e1e39, type: 3}
   isDead: 0
+  main: 1
+  main1: 1
   killTimer: 0
   killDelay: 2
+  mainsoundgo: 0
+  mainsoundgo1: 0
   Bullet: {fileID: 3301813879724815403, guid: 22f4e86fa2933d544b5a2046f2951612, type: 3}
   RightBulletSpawnPoint: {fileID: 0}
   LeftBulletSpawnPoint: {fileID: 0}
+  mainsound: {fileID: 0}
+  forestsound: {fileID: 0}
 --- !u!50 &2561986104256155876
 Rigidbody2D:
   serializedVersion: 4
@@ -320,6 +339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5478965185679611949}
+  - component: {fileID: 751922390}
   m_Layer: 0
   m_Name: LeftBulletSpawnPoint
   m_TagString: Untagged
@@ -341,3 +361,15 @@ Transform:
   m_Father: {fileID: 2561986104256155879}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &751922390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6961146579428685535}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff9c6ed64f2dee34fb6852f7f34e1df0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

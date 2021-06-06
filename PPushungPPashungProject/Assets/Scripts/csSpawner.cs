@@ -12,7 +12,8 @@ using UnityEngine;
 
 public class csSpawner : MonoBehaviour
 {
-
+    public AudioSource AS;
+    public AudioClip mainmusic;
     public GameObject playerPrefab;
     //public Vector3 spawnPoint;
     public int maxPlayerCount;
@@ -22,7 +23,8 @@ public class csSpawner : MonoBehaviour
 
     void Start()
     {
-        
+        AS = GetComponent<AudioSource>();
+        AS.PlayOneShot(mainmusic);
     }
     
     void Update()

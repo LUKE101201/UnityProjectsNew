@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class csPlayer : MonoBehaviour
 {
@@ -33,14 +34,19 @@ public class csPlayer : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip dropSound;
     public AudioClip killSound;
-
     public bool isDead;
+    public bool main = true;
+    public bool main1 = true;
     public float killTimer;
+    public float UpForce;
     public float killDelay;
-
+    public bool mainsoundgo;
+    public bool mainsoundgo1;
     public GameObject Bullet;
     public Transform RightBulletSpawnPoint;
     public Transform LeftBulletSpawnPoint;
+    public AudioClip mainsound;
+    public AudioClip forestsound;
 
 
 
@@ -56,14 +62,32 @@ public class csPlayer : MonoBehaviour
 
         R2D.freezeRotation = true;
         // Disable jumping on start
-        jumpFlag = true;
-	}
+        jumpFlag = true;             
+    }
     
 
 
     bool IsMoving()
     {
         return (R2D.velocity.sqrMagnitude > 1.0f);
+    }
+
+
+
+    // Average(0, 1, 2, 4, -1, 3);
+
+    double Average(params int[] args)
+    {
+        int count = args.Length;
+
+        int sum = 0;
+
+        for (int i = 0; i < count; i++)
+        {
+            sum += args[i];
+        }
+            
+        return sum / count;
     }
 
 
@@ -85,17 +109,29 @@ public class csPlayer : MonoBehaviour
         else
         {
 
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKey(KeyCode.Mouse1))
             {
                 // Instantiate 사용법 : Instantiate(소환할거 (GameObject), 위치 (Vector3), Quaternion (그냥 아래꺼 쓰면 됨))
                 GameObject newBullet = Instantiate(Bullet, RightBulletSpawnPoint.position, Quaternion.identity);
-                newBullet.GetComponent<Rigidbody2D>().AddForce(Vector2.right * shootForce);
+                Rigidbody2D BulletRG = newBullet.GetComponent<Rigidbody2D>();
+                BulletRG.AddForce(Vector2.right * shootForce);
+                BulletRG.AddForce(Vector2.up * UpForce);
+                AudioSource BulletAD;
+                BulletAD = GameObject.Find("Spawner").GetComponent<AudioSource>();
+                Debug.Log(BulletAD.volume);
+                string BulletMsg = "leftShoot!";
+                Debug.Log(BulletMsg);
+               
+
             }
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+
+            if (Input.GetKey(KeyCode.Mouse0))
             {
                 GameObject newBullet = Instantiate(Bullet, LeftBulletSpawnPoint.position, Quaternion.identity);
-                newBullet.GetComponent<Rigidbody2D>().AddForce(Vector2.left * shootForce);
-
+                Rigidbody2D newR2D = newBullet.GetComponent<Rigidbody2D>();
+                newR2D.AddForce(Vector2.left * shootForce);
+                newR2D.AddForce(Vector2.up * UpForce);
+                //newR2D.gravityScale = Random.Range(100,300);
             }
 
             SR.flipX = isLookingLeft;
@@ -118,7 +154,25 @@ public class csPlayer : MonoBehaviour
                 AS.PlayOneShot(jumpSound);
                 jumpFlag = true;
             }
+            if (main == true)
+            {
+                if (SceneManager.GetActiveScene().name == "1stage" && (mainsoundgo = true))
+                {
+                    AS.PlayOneShot(mainsound);
+                    mainsoundgo = false;
+                    main = false;
+                }
+            }
 
+            if (main1 == true)
+            {
+                if (SceneManager.GetActiveScene().name == "Foreststage" && (mainsoundgo1 = true))
+                {
+                    AS.PlayOneShot(forestsound);
+                    mainsoundgo1 = false;
+                    main1 = false;
+                }
+            }
         }
 		
     }
@@ -142,9 +196,22 @@ public class csPlayer : MonoBehaviour
             // this.GetComponent<Transform>() = transform
         }
 
+        if (coll.gameObject.CompareTag("Nextstage"))
+        {
+            SceneManager.LoadScene("1stage");
+        }
+
+        if (coll.gameObject.CompareTag("Forest"))
+        {
+            SceneManager.LoadScene("Foreststage");
+        }
+
+        
     }
 
-    void OnTriggerEnter2D(Collider2D coll)
+    
+
+        void OnTriggerEnter2D(Collider2D coll)
     {
 
        
