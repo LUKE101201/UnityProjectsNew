@@ -109,13 +109,14 @@ public class csPlayer : MonoBehaviour
         else
         {
 
-            if (Input.GetKey(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 // Instantiate 사용법 : Instantiate(소환할거 (GameObject), 위치 (Vector3), Quaternion (그냥 아래꺼 쓰면 됨))
                 GameObject newBullet = Instantiate(Bullet, RightBulletSpawnPoint.position, Quaternion.identity);
                 Rigidbody2D BulletRG = newBullet.GetComponent<Rigidbody2D>();
                 BulletRG.AddForce(Vector2.right * shootForce);
-                BulletRG.AddForce(Vector2.up * UpForce);
+                float magnitude = Random.Range(-600, 600);
+                BulletRG.AddForce(Vector2.up * (UpForce + magnitude));
                 AudioSource BulletAD;
                 BulletAD = GameObject.Find("Spawner").GetComponent<AudioSource>();
                 Debug.Log(BulletAD.volume);
@@ -125,12 +126,13 @@ public class csPlayer : MonoBehaviour
 
             }
 
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 GameObject newBullet = Instantiate(Bullet, LeftBulletSpawnPoint.position, Quaternion.identity);
                 Rigidbody2D newR2D = newBullet.GetComponent<Rigidbody2D>();
                 newR2D.AddForce(Vector2.left * shootForce);
-                newR2D.AddForce(Vector2.up * UpForce);
+                float magnitude = Random.Range(-600, 600);
+                newR2D.AddForce(Vector2.up * (UpForce + magnitude));
                 //newR2D.gravityScale = Random.Range(100,300);
             }
 
@@ -191,6 +193,7 @@ public class csPlayer : MonoBehaviour
         {
             AS.PlayOneShot(killSound);
             isDead = true;
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameCamera>().Shake(0.5f);
             // transform.Rotate(Vector3.forward * 90); // 옆으로 눕게
             // Destroy(this.GetComponent<GameObject>());
             // this.GetComponent<Transform>() = transform

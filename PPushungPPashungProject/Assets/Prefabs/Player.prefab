@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077155635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 0, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2561986104256155879}
@@ -166,7 +166,7 @@ MonoBehaviour:
   isLookingLeft: 0
   moveForceX: 500
   jumpForce: 500
-  shootForce: 7000
+  shootForce: 4000
   jumpFlag: 0
   AM: {fileID: 0}
   R2D: {fileID: 0}
@@ -179,6 +179,7 @@ MonoBehaviour:
   main: 1
   main1: 1
   killTimer: 0
+  UpForce: 1000
   killDelay: 2
   mainsoundgo: 0
   mainsoundgo1: 0
@@ -355,7 +356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6961146579428685535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.75, y: 0, z: 0}
+  m_LocalPosition: {x: -0.75, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2561986104256155879}

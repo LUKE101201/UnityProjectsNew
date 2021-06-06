@@ -76,7 +76,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -106,15 +106,15 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.26244736, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 0.5529412}
+      key0: {r: 1, g: 0.79861677, b: 0, a: 1}
+      key1: {r: 1, g: 0.12713629, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 14456
+      ctime0: 0
       ctime1: 65535
       ctime2: 0
       ctime3: 0
@@ -191,10 +191,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2bd1751229754f4f8682c8797f29c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletBoom: {fileID: 8026620799472994723, guid: 0082b7bc257b93a4ca08439a6ba49c62, type: 3}
   AS: {fileID: 5481539873930157896}
   Bulletbasasak: {fileID: 8300000, guid: c8efa5e94e6d8574eb86c1bfa70e1e39, type: 3}
   BulletColl: 0
   BulletColl2: 0
+  isDead: 0
+  timer: 0
+  delay: 0.3
 --- !u!82 &5481539873930157896
 AudioSource:
   m_ObjectHideFlags: 0

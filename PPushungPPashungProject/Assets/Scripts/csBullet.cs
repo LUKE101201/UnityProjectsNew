@@ -6,10 +6,16 @@ using UnityEngine.SceneManagement;
 public class csBullet : MonoBehaviour
 {
 
+    public GameObject BulletBoom;
+
     public AudioSource AS;
     public AudioClip Bulletbasasak;
     public bool BulletColl;
     public bool BulletColl2;
+
+    public bool isDead;
+    public float timer;
+    public float delay;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +33,15 @@ public class csBullet : MonoBehaviour
         //        Destroy(gameObject);
         //    }
         //}
+        if (isDead)
+        {
+            timer += Time.deltaTime;
+        }
+
+        if (timer > delay)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
@@ -44,7 +59,12 @@ public class csBullet : MonoBehaviour
 
         if (coll.gameObject.CompareTag("B") == false)
         {
-            Destroy(gameObject);
+            Instantiate(BulletBoom, transform.position, Quaternion.identity);
+            isDead = true;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            GetComponent<Rigidbody2D>().gravityScale = 0;
+            GetComponent<Rigidbody2D>().isKinematic = true;
+
             //AS.PlayOneShot(Bulletbasasak);
         }
 

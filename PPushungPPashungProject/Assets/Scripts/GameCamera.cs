@@ -7,8 +7,9 @@ public class GameCamera : MonoBehaviour
 
     public float currentCameraY;
 
-    public float mainCameraY;
-    public float undergroundCameraY;
+    public Vector3 magnitude;
+
+    public float shakeTimer = 0;
 
 
 
@@ -18,9 +19,26 @@ public class GameCamera : MonoBehaviour
 
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, currentCameraY, -10);
+
+
+        if (shakeTimer > 0)
+        {
+            magnitude = new Vector3(Random.Range(-shakeTimer, shakeTimer), Random.Range(-shakeTimer, shakeTimer));
+            shakeTimer -= Time.deltaTime;
+        }
+
+        transform.position = new Vector3(magnitude.x, currentCameraY + magnitude.y, -10);
+
+
+    }
+
+    public void Shake(float time)
+    {
+        shakeTimer += time;
     }
 }
