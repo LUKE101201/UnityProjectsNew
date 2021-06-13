@@ -44,7 +44,7 @@ public class NewPlayer : MonoBehaviour
 
         AM.SetBool("jumpFlag", jumpFlag);
         AM.SetBool("deadFlag", isDead);
-        AM.SetBool("WalkFlag", WalkFlag);
+        AM.SetBool("walkFlag", WalkFlag);
 
 
 
@@ -99,7 +99,7 @@ public class NewPlayer : MonoBehaviour
             jumpFlag = false;
         }
 
-        if (coll.gameObject.CompareTag("die"))
+        if (coll.gameObject.CompareTag("Kill"))
         {
             isDead = true;
         }
