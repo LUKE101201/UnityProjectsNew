@@ -20,6 +20,7 @@ public class NewPlayer : MonoBehaviour
     public bool jumpFlag = false;
 
     public bool isDead = false;
+    public bool DK = false;
     public bool isMoving = false;
 
 
@@ -42,6 +43,24 @@ public class NewPlayer : MonoBehaviour
 
         SR.flipX = isLookingLeft;
 
+
+
+        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.K))
+        {
+            DK = true;
+        }
+        else
+        {
+            DK = false;
+        }
+
+        AM.SetBool("DK", DK);
+
+        if (DK == true)
+        {
+
+        }
+        else
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
         {
             isMoving = false;
@@ -73,6 +92,8 @@ public class NewPlayer : MonoBehaviour
 
         AM.SetBool("jumpFlag", jumpFlag);
         AM.SetBool("walkFlag", isMoving);
+        
+
 
     }
 
