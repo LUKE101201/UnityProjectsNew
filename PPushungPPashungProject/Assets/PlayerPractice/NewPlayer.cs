@@ -21,8 +21,6 @@ public class NewPlayer : MonoBehaviour
 
     public bool isDead = false;
     public bool isMoving = false;
-    public bool Walk = false;
-    public bool WalkFlag = false;
 
 
 
@@ -40,53 +38,42 @@ public class NewPlayer : MonoBehaviour
     void Update()
     {
 
-        if (isDead == true) { return; }
-
-        AM.SetBool("jumpFlag", jumpFlag);
-        AM.SetBool("deadFlag", isDead);
-        AM.SetBool("walkFlag", WalkFlag);
-
-
-
+        if (isDead == true) { AM.SetBool("deadFlag", true); return; }
 
         SR.flipX = isLookingLeft;
 
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+        {
+            isMoving = false;
+        }
+        else
         if (Input.GetKey(KeyCode.A))
         {
             R2D.AddForce(new Vector2(-moveForceX * Time.deltaTime, 0));
             isLookingLeft = true;
-            WalkFlag = true;
-            Walk = true;
+            isMoving = true;
         }
         else
-        {
-            Walk = false;
-        }
-
-        if (Walk == false)
-        {
-            WalkFlag = false;
-        }
-
         if (Input.GetKey(KeyCode.D))
         {
             R2D.AddForce(new Vector2(moveForceX * Time.deltaTime, 0));
             isLookingLeft = false;
-            WalkFlag = true;
-            Walk = true;
+            isMoving = true;
         }
         else
         {
-            Walk = false;
+            isMoving = false;
         }
-
-
 
         if (Input.GetKeyDown(KeyCode.Space) == true && jumpFlag == false)
         {
             R2D.AddForce(new Vector2(0, jumpForce));
             jumpFlag = true;
         }
+
+        AM.SetBool("jumpFlag", jumpFlag);
+        AM.SetBool("walkFlag", isMoving);
+
     }
 
 
