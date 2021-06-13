@@ -7130,6 +7130,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2561986104256155882, guid: 14685f0e8abe3ec41aa20231cfe1c788, type: 3}
+      propertyPath: Gamego
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14685f0e8abe3ec41aa20231cfe1c788, type: 3}
 --- !u!1001 &7215554064984061700

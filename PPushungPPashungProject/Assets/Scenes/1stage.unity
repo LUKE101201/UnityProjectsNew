@@ -1489,6 +1489,10 @@ PrefabInstance:
       propertyPath: shootForce
       value: 14000
       objectReference: {fileID: 0}
+    - target: {fileID: 2561986104256155882, guid: 14685f0e8abe3ec41aa20231cfe1c788, type: 3}
+      propertyPath: mainsoundgo1
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14685f0e8abe3ec41aa20231cfe1c788, type: 3}
 --- !u!1 &1571812270

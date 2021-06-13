@@ -39,6 +39,7 @@ public class csPlayer : MonoBehaviour
     public bool main1 = true;
     public float killTimer;
     public float UpForce;
+    public bool Gamego;
     public float killDelay;
     public bool mainsoundgo;
     public bool mainsoundgo1;
@@ -94,89 +95,92 @@ public class csPlayer : MonoBehaviour
 
     void Update()
     {
-        AM.SetBool("dead", isDead);
-        AM.SetBool("walking", IsMoving());
-        AM.SetBool("jumping", jumpFlag);
-
-        if (isDead)
+        if (Gamego == true)
         {
-            killTimer += Time.deltaTime;
-            if (killTimer >= killDelay)
-            {
-                Destroy(gameObject);
-            }
-        }
-        else
-        {
+            AM.SetBool("dead", isDead);
+            AM.SetBool("walking", IsMoving());
+            AM.SetBool("jumping", jumpFlag);
 
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (isDead)
             {
-                // Instantiate 사용법 : Instantiate(소환할거 (GameObject), 위치 (Vector3), Quaternion (그냥 아래꺼 쓰면 됨))
-                GameObject newBullet = Instantiate(Bullet, RightBulletSpawnPoint.position, Quaternion.identity);
-                Rigidbody2D BulletRG = newBullet.GetComponent<Rigidbody2D>();
-                BulletRG.AddForce(Vector2.right * shootForce);
-                float magnitude = Random.Range(-600, 600);
-                BulletRG.AddForce(Vector2.up * (UpForce + magnitude));
-                AudioSource BulletAD;
-                BulletAD = GameObject.Find("Spawner").GetComponent<AudioSource>();
-                Debug.Log(BulletAD.volume);
-                string BulletMsg = "leftShoot!";
-                Debug.Log(BulletMsg);
-               
-
-            }
-
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                GameObject newBullet = Instantiate(Bullet, LeftBulletSpawnPoint.position, Quaternion.identity);
-                Rigidbody2D newR2D = newBullet.GetComponent<Rigidbody2D>();
-                newR2D.AddForce(Vector2.left * shootForce);
-                float magnitude = Random.Range(-600, 600);
-                newR2D.AddForce(Vector2.up * (UpForce + magnitude));
-                //newR2D.gravityScale = Random.Range(100,300);
-            }
-
-            SR.flipX = isLookingLeft;
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                R2D.AddForce(new Vector2(-moveForceX * Time.deltaTime, 0));
-                isLookingLeft = true;
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                R2D.AddForce(new Vector2(moveForceX * Time.deltaTime, 0));
-                isLookingLeft = false;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space) == true && jumpFlag == false)
-            {
-                R2D.AddForce(new Vector2(0, jumpForce));
-                AS.PlayOneShot(jumpSound);
-                jumpFlag = true;
-            }
-            if (main == true)
-            {
-                if (SceneManager.GetActiveScene().name == "1stage" && (mainsoundgo = true))
+                killTimer += Time.deltaTime;
+                if (killTimer >= killDelay)
                 {
-                    AS.PlayOneShot(mainsound);
-                    mainsoundgo = false;
-                    main = false;
+                    Destroy(gameObject);
+                }
+            }
+            else
+            {
+
+                if (Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    // Instantiate 사용법 : Instantiate(소환할거 (GameObject), 위치 (Vector3), Quaternion (그냥 아래꺼 쓰면 됨))
+                    GameObject newBullet = Instantiate(Bullet, RightBulletSpawnPoint.position, Quaternion.identity);
+                    Rigidbody2D BulletRG = newBullet.GetComponent<Rigidbody2D>();
+                    BulletRG.AddForce(Vector2.right * shootForce);
+                    float magnitude = Random.Range(-600, 600);
+                    BulletRG.AddForce(Vector2.up * (UpForce + magnitude));
+                    AudioSource BulletAD;
+                    BulletAD = GameObject.Find("Spawner").GetComponent<AudioSource>();
+                    Debug.Log(BulletAD.volume);
+                    string BulletMsg = "leftShoot!";
+                    Debug.Log(BulletMsg);
+
+
+                }
+
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    GameObject newBullet = Instantiate(Bullet, LeftBulletSpawnPoint.position, Quaternion.identity);
+                    Rigidbody2D newR2D = newBullet.GetComponent<Rigidbody2D>();
+                    newR2D.AddForce(Vector2.left * shootForce);
+                    float magnitude = Random.Range(-600, 600);
+                    newR2D.AddForce(Vector2.up * (UpForce + magnitude));
+                    //newR2D.gravityScale = Random.Range(100,300);
+                }
+
+                SR.flipX = isLookingLeft;
+
+                if (Input.GetKey(KeyCode.A))
+                {
+                    R2D.AddForce(new Vector2(-moveForceX * Time.deltaTime, 0));
+                    isLookingLeft = true;
+                }
+
+                if (Input.GetKey(KeyCode.D))
+                {
+                    R2D.AddForce(new Vector2(moveForceX * Time.deltaTime, 0));
+                    isLookingLeft = false;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space) == true && jumpFlag == false)
+                {
+                    R2D.AddForce(new Vector2(0, jumpForce));
+                    AS.PlayOneShot(jumpSound);
+                    jumpFlag = true;
+                }
+                if (main == true)
+                {
+                    if (SceneManager.GetActiveScene().name == "1stage" && (mainsoundgo = true))
+                    {
+                        AS.PlayOneShot(mainsound);
+                        mainsoundgo = false;
+                        main = false;
+                    }
+                }
+
+                if (main1 == true)
+                {
+                    if (SceneManager.GetActiveScene().name == "Foreststage" && (mainsoundgo1 = true))
+                    {
+                        AS.PlayOneShot(forestsound);
+                        mainsoundgo1 = false;
+                        main1 = false;
+                    }
                 }
             }
 
-            if (main1 == true)
-            {
-                if (SceneManager.GetActiveScene().name == "Foreststage" && (mainsoundgo1 = true))
-                {
-                    AS.PlayOneShot(forestsound);
-                    mainsoundgo1 = false;
-                    main1 = false;
-                }
-            }
         }
-		
     }
 	
 
@@ -209,7 +213,13 @@ public class csPlayer : MonoBehaviour
             SceneManager.LoadScene("Foreststage");
         }
 
-        
+        if (coll.gameObject.CompareTag("Die"))
+        {
+            Gamego = false;
+            Time.timeScale = 0;
+        }
+
+
     }
 
     
