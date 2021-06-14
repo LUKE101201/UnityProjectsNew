@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4194485692707331620}
   - component: {fileID: 4194485692707331619}
   - component: {fileID: 4194485692707331622}
+  - component: {fileID: 991645725881448741}
   m_Layer: 0
   m_Name: worm1 (1)
   m_TagString: Die
@@ -129,3 +130,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.10750654}
   m_EdgeRadius: 0
+--- !u!114 &991645725881448741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194485692707331618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c61f0a0d4bfac459d16182855b09a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
