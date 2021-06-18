@@ -175,6 +175,16 @@ public class csPlayer : MonoBehaviour
                     main1 = false;
                 }
             }
+
+          //  if (main2 == true)
+          //  {
+          //     if (SceneManager.GetActiveScene().name == "Foreststage" && (mainsoundgo2 = true))
+          //    {
+          //        AS.PlayOneShot(forestsound);
+          //        mainsoundgo2 = false;
+          //       main2 = false;
+          //    }
+          // }
         }
     }
 
