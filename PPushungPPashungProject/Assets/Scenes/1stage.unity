@@ -2634,8 +2634,8 @@ MonoBehaviour:
   Bullet: {fileID: 3301813879724815403, guid: 22f4e86fa2933d544b5a2046f2951612, type: 3}
   RightBulletSpawnPoint: {fileID: 0}
   LeftBulletSpawnPoint: {fileID: 0}
-  mainsound: {fileID: 0}
-  forestsound: {fileID: 0}
+  mainsound: {fileID: 8300000, guid: a3f5d7a3f32f2a5478d351298ba7df03, type: 3}
+  forestsound: {fileID: 8300000, guid: 86d4c5a412c2d5646affdc54cbf49904, type: 3}
 --- !u!212 &6067526366677827544
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class moveforever : MonoBehaviour
+public class bulletMove : MonoBehaviour
 {
+    float count;
+    public float maxrage;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,14 @@ public class moveforever : MonoBehaviour
     void Update()
     {
         transform.Translate(0.1f, 0, 0);
+    }
+
+    private void FixedUpdate()
+    {
+        count++;
+        if(count >= maxrage)
+        {
+            Destroy(gameObject);
+        }
     }
 }

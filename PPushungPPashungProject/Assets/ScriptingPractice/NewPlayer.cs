@@ -12,9 +12,10 @@ public class NewPlayer : MonoBehaviour
     public Animator AM;
     public SpriteRenderer SR;
     public Rigidbody2D R2D;
+    public Transform bulletspawnpoint;
 
-
-
+    public GameObject Bullet_1;
+    public GameObject Bullet;
     public float moveForceX = 0;
     public float jumpForce = 0;
     public bool jumpFlag = false;
@@ -31,6 +32,8 @@ public class NewPlayer : MonoBehaviour
         AM = GetComponent<Animator>();
         R2D = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
+        bulletspawnpoint = transform.Find("bulletSpawn").GetComponent<Transform>();
+        bulletspawnpoint = transform.Find("bulletSpawn_2").GetComponent<Transform>();
     }
 
 
@@ -42,8 +45,17 @@ public class NewPlayer : MonoBehaviour
         if (isDead == true) { AM.SetBool("deadFlag", true); return; }
 
         SR.flipX = isLookingLeft;
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+            GameObject TempBullet = Instantiate(Bullet, bulletspawnpoint.position, Quaternion.identity);
 
+            }
 
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            GameObject HitBullet = Instantiate(Bullet_1, bulletspawnpoint.position, Quaternion.identity);
+
+        }
 
         if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.K))
         {

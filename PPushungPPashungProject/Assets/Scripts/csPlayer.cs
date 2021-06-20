@@ -118,12 +118,10 @@ public class csPlayer : MonoBehaviour
                 BulletRG.AddForce(Vector2.right * shootForce);
                 float magnitude = Random.Range(-600, 600);
                 BulletRG.AddForce(Vector2.up * (UpForce + magnitude));
-                AudioSource BulletAD;
+
                 //BulletAD = GameObject.Find("Spawner").GetComponent<AudioSource>();
                 //Debug.Log(BulletAD.volume);
                 //string BulletMsg = "leftShoot!";
-
-
             }
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
