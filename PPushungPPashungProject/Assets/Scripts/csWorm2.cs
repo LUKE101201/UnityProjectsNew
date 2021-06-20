@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class csWorm : MonoBehaviour
+public class csWorm2 : MonoBehaviour
 {
     public float count = 0;
+    public float killcount = 0;
+    public float killmax = 500;
     public float HP = 50;
     //public Gameobject Boss_page2_1;
     // Start is called before the first frame update
@@ -18,7 +20,7 @@ public class csWorm : MonoBehaviour
     {
         if (count >= HP)
         {
-            Destroy(gameObject);
+            transform.Translate(-0.02f, 0, 0);
             //GameObject dd = Instantiate(Boss_page2_1,0,0)
         }
     }

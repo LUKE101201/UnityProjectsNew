@@ -25,6 +25,7 @@ public class VectorLerp : MonoBehaviour
         if (position < 0) position = 0;
         if (position > 1) position = 1;
 
+        //return (start + (end - start) * position);
         return (start + (end - start) * position);
     }
 
